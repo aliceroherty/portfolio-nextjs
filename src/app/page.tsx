@@ -1,4 +1,4 @@
-import './App.css'
+'use client'
 import 'animate.css'
 import Nav from './components/Nav'
 import Home from './components/Home'
@@ -23,7 +23,7 @@ const muiTheme = createTheme({
 	},
 })
 
-const Home = () => {
+const Page = () => {
 	return (
 		<ThemeProvider theme={muiTheme}>
 			<Nav />
@@ -38,4 +38,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default Page
