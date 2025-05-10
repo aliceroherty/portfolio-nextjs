@@ -1,12 +1,8 @@
 "use client";
 
-import PropTypes from 'prop-types'
 import { useFrame } from '@react-three/fiber'
 
-const KeyboardAnimation = ({ mesh }) => {
-    KeyboardAnimation.propTypes = {
-        mesh: PropTypes.object.isRequired,
-    }
+const KeyboardAnimation = ({ mesh : Mesh}) => {
 
     // useFrame is a hook from react-three-fiber that allows you to run code on each frame
     useFrame(() => {
