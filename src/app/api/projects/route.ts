@@ -1,6 +1,10 @@
 import { PrismaClient } from '../../../../generated/prisma'
 
 export async function GET() {
-	const client = new PrismaClient()
-    return new Response(JSON.stringify(await client.projects.findMany()));
+    const client = new PrismaClient()
+	const projects = await client.projects.findMany()
+	return new Response(JSON.stringify(projects), {
+		status: 200,
+		headers: { 'Content-Type': 'application/json' },
+	})
 }
