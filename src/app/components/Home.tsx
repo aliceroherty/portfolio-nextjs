@@ -1,6 +1,6 @@
 "use client";
 
-import KeyboardRenderer from './Keyboard/KeyboardRenderer';
+import KeyboardRenderer from './Keyboard/KeyboardRenderer'
 import { Button } from '@mui/material';
 import DownArrowIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from 'react-scroll';
