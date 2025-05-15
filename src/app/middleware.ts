@@ -1,7 +1,8 @@
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { handleCors } from './middleware/cors'
 
 export function middleware(req: NextRequest) {
-	const response = handleCors(req)
-    return response
+	const res = NextResponse.next()
+	const response = handleCors(req, res)
+	return response
 }
