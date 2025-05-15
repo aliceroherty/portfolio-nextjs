@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { TextField, Button, CircularProgress } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
-import CheckIcon from '@mui/icons-material/Check';
-import { motion } from 'motion/react';
-import emailjs from '@emailjs/browser';
+import { TextField, Button, CircularProgress } from '@mui/material'
+import SendIcon from '@mui/icons-material/Send'
+import CheckIcon from '@mui/icons-material/Check'
+import { motion } from 'motion/react'
+import emailjs from '@emailjs/browser'
 import { Ref, useRef, useState } from 'react'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
@@ -61,11 +61,11 @@ const Contact = () => {
 						setLoading(false)
 						resetForm()
 					},
-                    (error) => {
-                        console.log(error.text)
-                        setSuccess(false)
-                        setLoading(false)
-                    }
+					(error) => {
+						console.log(error.text)
+						setSuccess(false)
+						setLoading(false)
+					}
 				)
 		},
 	})
@@ -80,15 +80,15 @@ const Contact = () => {
 		}
 	}
 
-const renderSubmitButtonText = () => {
-    if (loading) {
-        return 'Sending'
-    } else if (success) {
-        return 'Sent'
-    } else {
-        return 'Send'
-    }
-}
+	const renderSubmitButtonText = () => {
+		if (loading) {
+			return 'Sending'
+		} else if (success) {
+			return 'Sent'
+		} else {
+			return 'Send'
+		}
+	}
 
 	return (
 		<Element name='contact' className='w-full'>
@@ -164,4 +164,4 @@ const renderSubmitButtonText = () => {
 	)
 }
 
-export default Contact;
+export default Contact

@@ -31,7 +31,7 @@ const ProjectCard = ({ githubUrl, imageUrl, title, description }: Project) => {
 				<CardMedia
 					className='h-64'
 					component='img'
-					image={`${process.env.API_URL}/${imageUrl}`}
+					image={`${imageUrl}`}
 					alt={`${title} Image`}
 					sx={{ padding: '1em 1em 0 1em', objectFit: 'contain' }}
 				/>

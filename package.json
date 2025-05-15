@@ -48,6 +48,7 @@
 		"gltfjsx": "^6.5.3",
 		"prisma": "^6.7.0",
 		"tailwindcss": "^4",
-		"typescript": "^5"
+		"typescript": "^5",
+		"vercel": "^41.7.6"
 	}
 }

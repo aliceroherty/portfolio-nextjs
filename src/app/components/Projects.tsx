@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
-import { login, logout, refresh } from '../utils/authentication'
 import { CircularProgress } from '@mui/material'
 import { slideInLeft } from '../utils/motion'
 import { Element } from 'react-scroll'
@@ -15,36 +14,20 @@ const Projects = () => {
 
 	const fetchProjects = async () => {
 		try {
-			let tokens = await login()
+			const res = await fetch(
+				`${process.env.NEXT_PUBLIC_API_URL}/projects`
+			)
 
-			if (tokens) {
-				let res = await fetch(`http://localhost:3000/api/projects`, {
-					headers: {
-						Authorization: `Bearer ${tokens.accessToken}`,
-					},
-				})
-
-				if (res.status == 200) {
-					const results = await res.json()
-					setProjects(results)
-				} else if (res.status == 403) {
-					tokens = await refresh(tokens.refreshToken)
-					res = await fetch(`http://localhost:3000/api/projects`, {
-						headers: {
-							Authorization: `Bearer ${tokens.accessToken}`,
-						},
-					})
-					const results = await res.json()
-					setProjects(results)
-				}
-
-				await logout(tokens.refreshToken)
+			if (res.status == 200) {
+				const results = await res.json()
+				setProjects(results)
 			} else {
-				throw new Error('Tokens undefined.')
+				setError(true)
+				console.error('Failed to fetch projects')
 			}
 		} catch (error: unknown) {
 			setError(true)
-			console.log((error as Error)?.message)
+			console.error((error as Error)?.message)
 		}
 
 		setLoading(false)

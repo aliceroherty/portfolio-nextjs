@@ -27,6 +27,7 @@ const Nav = () => {
 				<section className='flex lg:hidden'>
 					<div
 						className='space-y-2 [&>*]:hover:bg-gray-400 cursor-pointer [&>*]:transition-colors [&>*]:ease-in-out [&>*]:duration-300'
+						role='button'
 						onClick={() => setOpen((prev) => !prev)}
 					>
 						<span className='block h-0.5 w-8 bg-white'></span>
