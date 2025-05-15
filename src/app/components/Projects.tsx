@@ -13,10 +13,16 @@ const Projects = () => {
 	const [loading, setLoading] = useState(true)
 
 	const fetchProjects = async () => {
-		try {
-			const res = await fetch(
-				`${process.env.NEXT_PUBLIC_API_URL}/projects`
-			)
+        try {
+			let apiUrl: string = process.env.NEXT_PUBLIC_API_URL as string
+
+			// For non-development environments, use the current origin
+			// This is to avoid CORS issues when deploying the app
+			if (process.env.NEXT_PUBLIC_NODE_ENV !== 'development') {
+				apiUrl = window.location.origin
+			}
+
+			const res = await fetch(`${apiUrl}/projects`)
 
 			if (res.status == 200) {
 				const results = await res.json()
