@@ -19,7 +19,7 @@ const Projects = () => {
 			// For non-development environments, use the current origin
 			// This is to avoid CORS issues when deploying the app
 			if (process.env.NEXT_PUBLIC_NODE_ENV !== 'development') {
-				apiUrl = window.location.origin
+				apiUrl = `${window.location.origin}/api`
 			}
 
 			const res = await fetch(`${apiUrl}/projects`)
