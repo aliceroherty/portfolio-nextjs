@@ -52,60 +52,59 @@ const Experience = () => {
     ];
 
     return (
-        <Element name="experience" className="w-full">
-            <motion.div
-                variants={slideInLeft}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="w-full text-left mt-1 mb-24"
-                id="timeline"
-                name="timeline"
-            >
-                <h4 className="lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left">
-                    Experience
-                </h4>
-                <VerticalTimeline>
-                    {timelineElements.map((element) => {
-                        return (
-                            <VerticalTimelineElement
-                                key={element.id}
-                                date={element.date}
-                                dateClassName="date"
-                                contentStyle={{
-                                    background: '#212121',
-                                    color: '#fff',
-                                }}
-                                contentArrowStyle={{
-                                    borderRight: '7px solid #212121',
-                                }}
-                                iconStyle={{ background: 'rgb(249 168 212)' }}
-                                icon={
-                                    element.icon === 'work' ? (
-                                        <WorkOutlineIcon />
-                                    ) : (
-                                        <SchoolIcon />
-                                    )
-                                }
-                            >
-                                <h3 className="vertical-timeline-element-title text-2xl">
-                                    {element.title}
-                                </h3>
-                                <h5 className="vertical-timeline-element-subtitle">
-                                    {element.location}
-                                </h5>
-                                <div
-                                    dangerouslySetInnerHTML={{
-                                        __html: element.description,
-                                    }}
-                                />
-                            </VerticalTimelineElement>
-                        );
-                    })}
-                </VerticalTimeline>
-            </motion.div>
-        </Element>
-    );
+		<Element name='experience' className='w-full'>
+			<motion.div
+				variants={slideInLeft}
+				initial='hidden'
+				whileInView='visible'
+				viewport={{ once: true }}
+				className='w-full text-left mt-1 mb-24'
+				id='timeline'
+			>
+				<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
+					Experience
+				</h4>
+				<VerticalTimeline>
+					{timelineElements.map((element) => {
+						return (
+							<VerticalTimelineElement
+								key={element.id}
+								date={element.date}
+								dateClassName='date'
+								contentStyle={{
+									background: '#212121',
+									color: '#fff',
+								}}
+								contentArrowStyle={{
+									borderRight: '7px solid #212121',
+								}}
+								iconStyle={{ background: 'rgb(249 168 212)' }}
+								icon={
+									element.icon === 'work' ? (
+										<WorkOutlineIcon />
+									) : (
+										<SchoolIcon />
+									)
+								}
+							>
+								<h3 className='vertical-timeline-element-title text-2xl'>
+									{element.title}
+								</h3>
+								<h5 className='vertical-timeline-element-subtitle'>
+									{element.location}
+								</h5>
+								<div
+									dangerouslySetInnerHTML={{
+										__html: element.description,
+									}}
+								/>
+							</VerticalTimelineElement>
+						)
+					})}
+				</VerticalTimeline>
+			</motion.div>
+		</Element>
+	)
 };
 
 export default Experience;
