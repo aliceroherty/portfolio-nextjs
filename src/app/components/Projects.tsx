@@ -41,7 +41,11 @@ const Projects = () => {
 
 	const renderProjects = () => {
 		if (loading) {
-			return <CircularProgress />
+            return (
+				<div className='w-full flex justify-center items-center'>
+					<CircularProgress />
+				</div>
+			)
 		} else if (error) {
 			return <p>Something went wrong retrieving the projects...</p>
 		} else {
