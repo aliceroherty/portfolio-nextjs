@@ -11,17 +11,19 @@ type AnimatedSectionProps = {
 }
 
 const AnimatedSection = ({ id, className, motionProps, children }: AnimatedSectionProps) => {
-	return (
-		<motion.div
-			variants={motionProps?.variants || slideInLeft}
-			initial={motionProps?.initial || 'hidden'}
-            whileInView={motionProps?.whileInView || 'visible'}
-            viewport={motionProps?.viewport || { once: true }}
-			className={className ?? 'w-full text-left mt-1 mb-24'}
-			id={id}
-		>
-			{children}
-		</motion.div>
+    return (
+		<div className='w-full'>
+			<motion.div
+				variants={motionProps?.variants || slideInLeft}
+				initial={motionProps?.initial || 'hidden'}
+				whileInView={motionProps?.whileInView || 'visible'}
+				viewport={motionProps?.viewport || { once: true }}
+				className={className ?? 'w-full text-left mt-1 mb-24'}
+				id={id}
+			>
+				{children}
+			</motion.div>
+		</div>
 	)
 }
 
