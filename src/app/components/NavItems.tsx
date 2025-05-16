@@ -1,37 +1,38 @@
-"use client"
-import { useEffect, useState } from 'react';
-import NavItem from '../models/nav-item';
-import Link from 'next/link';
+'use client'
+import { useEffect, useState } from 'react'
+import NavItem from '../models/nav-item'
+import Link from 'next/link'
+
+const items: NavItem[] = [
+	{
+		id: 'home',
+		href: '/home',
+		title: 'Home',
+	},
+	{
+		id: 'about',
+		href: '/about',
+		title: 'About',
+	},
+	{
+		id: 'experience',
+		href: '/experience',
+		title: 'Experience',
+	},
+	{
+		id: 'projects',
+		href: '/projects',
+		title: 'Projects',
+	},
+	{
+		id: 'contact',
+		href: '/contact',
+		title: 'Contact',
+	},
+]
 
 const NavItems = () => {
 	const [activeSection, setActiveSection] = useState('')
-	const items: NavItem[] = [
-		{
-			id: 'home',
-			href: '/home',
-			title: 'Home',
-		},
-		{
-			id: 'about',
-			href: '/about',
-			title: 'About',
-		},
-		{
-			id: 'experience',
-			href: '/experience',
-			title: 'Experience',
-		},
-		{
-			id: 'projects',
-			href: '/projects',
-			title: 'Projects',
-		},
-		{
-			id: 'contact',
-			href: '/contact',
-			title: 'Contact',
-		},
-	]
 
 	const scrollToSectionWithOffset = (id: string, offset = 50) => {
 		const section = document.getElementById(id)
@@ -91,13 +92,19 @@ const NavItems = () => {
 				observer.observe(section)
 			}
 		})
-	})
+	}, [])
 
 	return items.map((item) => (
 		<li key={item.id}>
 			<Link
 				href={item.href}
 				className={activeSection === item?.id ? 'active' : 'inactive'}
+				onClick={(e) => {
+					e.preventDefault()
+					scrollToSectionWithOffset(item.id, 100)
+					window.history.replaceState(null, '', `/${item.id}`)
+					setActiveSection(item.id)
+				}}
 			>
 				{item.title}
 			</Link>
@@ -105,4 +112,4 @@ const NavItems = () => {
 	))
 }
 
-export default NavItems;
+export default NavItems
