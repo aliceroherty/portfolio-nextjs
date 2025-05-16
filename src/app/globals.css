@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #f9a8d4;
+  --color-primary-dark: #ca89ad;
+}
+
 @layer components {
     .active {
-        color: rgb(249 168 212);
+        color: var(--color-primary);
         cursor: pointer;
         font-size: var(--text-xl);
         &:hover {
-            color: rgb(202, 137, 173);
+            color: var(--color-primary-dark);
         }
     }
 
