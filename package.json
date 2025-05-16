@@ -15,7 +15,7 @@
 		"@emotion/styled": "^11.14.0",
 		"@mui/icons-material": "^7.0.1",
 		"@mui/material": "^7.0.1",
-		"@prisma/client": "^6.7.0",
+		"@prisma/client": "^6.8.1",
 		"@react-three/drei": "^10.0.6",
 		"@react-three/fiber": "^9.1.2",
 		"animate.css": "^4.1.1",
@@ -43,7 +43,7 @@
 		"eslint": "^9",
 		"eslint-config-next": "15.3.0",
 		"gltfjsx": "^6.5.3",
-		"prisma": "^6.7.0",
+		"prisma": "^6.8.1",
 		"tailwindcss": "^4",
 		"typescript": "^5"
 	}
