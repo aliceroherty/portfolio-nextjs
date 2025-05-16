@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+@layer components {
+    .active {
+        color: rgb(249 168 212);
+        cursor: pointer;
+        font-size: var(--text-xl);
+        &:hover {
+            color: rgb(202, 137, 173);
+        }
+    }
+
+    .inactive {
+        cursor: pointer;
+        color: white;
+        font-size: var(--text-xl);
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+            color: var(--text-gray-500);
+        }
+    }
+}
+
 html,
 body,
 #root {
@@ -15,16 +37,11 @@ body {
 	overflow-x: hidden;
 }
 
-.active {
-	color: rgb(249 168 212) !important;
-}
-
 .hideNav {
 	display: none;
 }
 
 .showNav {
-	display: block;
 	position: absolute;
 	width: 100%;
 	height: 100vh;

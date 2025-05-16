@@ -1,4 +1,5 @@
-import KeyboardRenderer from './Keyboard/KeyboardRenderer'
+import 'animate.css'
+import KeyboardRenderer from '../keyboard/KeyboardRenderer'
 import { Button } from '@mui/material'
 import DownArrowIcon from '@mui/icons-material/KeyboardArrowDown'
 import Link from 'next/link'

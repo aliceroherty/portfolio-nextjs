@@ -1,14 +1,12 @@
-"use client";
-
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
-import SchoolIcon from '@mui/icons-material/School';
+'use client'
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
+import SchoolIcon from '@mui/icons-material/School'
 import {
 	VerticalTimeline,
 	VerticalTimelineElement,
-} from 'react-vertical-timeline-component';
+} from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
-import { Element } from 'react-scroll';
-import AnimatedSection from './utils/AnimatedSection'
+import AnimatedSection from '../utils/AnimatedSection'
 
 const Experience = () => {
 	const timelineElements = [
@@ -51,52 +49,50 @@ const Experience = () => {
 	]
 
 	return (
-		<Element name='experience' className='w-full'>
-			<AnimatedSection>
-				<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
-					Experience
-				</h4>
-				<VerticalTimeline>
-					{timelineElements.map((element) => {
-						return (
-							<VerticalTimelineElement
-								key={element.id}
-								date={element.date}
-								dateClassName='date'
-								contentStyle={{
-									background: '#212121',
-									color: '#fff',
+		<AnimatedSection id='experience'>
+			<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
+				Experience
+			</h4>
+			<VerticalTimeline>
+				{timelineElements.map((element) => {
+					return (
+						<VerticalTimelineElement
+							key={element.id}
+							date={element.date}
+							dateClassName='date'
+							contentStyle={{
+								background: '#212121',
+								color: '#fff',
+							}}
+							contentArrowStyle={{
+								borderRight: '7px solid #212121',
+							}}
+							iconStyle={{ background: 'rgb(249 168 212)' }}
+							icon={
+								element.icon === 'work' ? (
+									<WorkOutlineIcon />
+								) : (
+									<SchoolIcon />
+								)
+							}
+						>
+							<h3 className='vertical-timeline-element-title text-2xl'>
+								{element.title}
+							</h3>
+							<h5 className='vertical-timeline-element-subtitle'>
+								{element.location}
+							</h5>
+							<div
+								dangerouslySetInnerHTML={{
+									__html: element.description,
 								}}
-								contentArrowStyle={{
-									borderRight: '7px solid #212121',
-								}}
-								iconStyle={{ background: 'rgb(249 168 212)' }}
-								icon={
-									element.icon === 'work' ? (
-										<WorkOutlineIcon />
-									) : (
-										<SchoolIcon />
-									)
-								}
-							>
-								<h3 className='vertical-timeline-element-title text-2xl'>
-									{element.title}
-								</h3>
-								<h5 className='vertical-timeline-element-subtitle'>
-									{element.location}
-								</h5>
-								<div
-									dangerouslySetInnerHTML={{
-										__html: element.description,
-									}}
-								/>
-							</VerticalTimelineElement>
-						)
-					})}
-				</VerticalTimeline>
-			</AnimatedSection>
-		</Element>
+							/>
+						</VerticalTimelineElement>
+					)
+				})}
+			</VerticalTimeline>
+		</AnimatedSection>
 	)
 }
 
-export default Experience;
+export default Experience

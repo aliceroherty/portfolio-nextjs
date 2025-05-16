@@ -1,7 +1,7 @@
 import ProjectCard from './ProjectCard'
-import Project from '../models/project'
-import { PrismaClient } from '../../../generated/prisma'
-import AnimatedSection from './utils/AnimatedSection'
+import Project from '../../models/project'
+import { PrismaClient } from '../../../../generated/prisma'
+import AnimatedSection from '../utils/AnimatedSection'
 
 const Projects = async () => {
 	const projects: Project[] = await new PrismaClient().projects.findMany()
@@ -24,7 +24,7 @@ const Projects = async () => {
 	}
 
     return (
-		<AnimatedSection>
+		<AnimatedSection id='projects'>
 			<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
 				Projects
 			</h4>

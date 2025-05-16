@@ -1,5 +1,4 @@
 'use client'
-
 import { TextField, Button, CircularProgress } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import CheckIcon from '@mui/icons-material/Check'
@@ -7,8 +6,7 @@ import emailjs from '@emailjs/browser'
 import { Ref, useRef, useState } from 'react'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
-import { Element } from 'react-scroll'
-import AnimatedSection from './utils/AnimatedSection'
+import AnimatedSection from '../utils/AnimatedSection'
 
 const validationSchema = yup.object({
 	name: yup
@@ -90,69 +88,60 @@ const Contact = () => {
 	}
 
 	return (
-		<Element name='contact' className='w-full'>
-			<AnimatedSection id='contact'>
-				<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
-					Contact Me
-				</h4>
-				<form
-					ref={ref}
-					onSubmit={formik.handleSubmit}
-					className='flex flex-col gap-16 w-full my-auto h-auto lg:w-[55%] lg:mx-0 bg-[#212121] px-5 py-6 lg:px-14 lg:py-16 rounded-lg justify-between'
+		<AnimatedSection id='contact'>
+			<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
+				Contact Me
+			</h4>
+			<form
+				ref={ref}
+				onSubmit={formik.handleSubmit}
+				className='flex flex-col gap-16 w-full my-auto h-auto lg:w-[55%] lg:mx-0 bg-[#212121] px-5 py-6 lg:px-14 lg:py-16 rounded-lg justify-between'
+			>
+				<TextField
+					label='What is your name?'
+					name='name'
+					fullWidth
+					value={formik.values.name}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					error={formik.touched.name && Boolean(formik.errors.name)}
+					helperText={formik.touched.name && formik.errors.name}
+				/>
+				<TextField
+					label='What is your email?'
+					name='email'
+					fullWidth
+					value={formik.values.email}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					error={formik.touched.email && Boolean(formik.errors.email)}
+					helperText={formik.touched.email && formik.errors.email}
+				/>
+				<TextField
+					label='What would you like to say?'
+					name='message'
+					fullWidth
+					multiline
+					value={formik.values.message}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					error={
+						formik.touched.message && Boolean(formik.errors.message)
+					}
+					helperText={formik.touched.message && formik.errors.message}
+				/>
+				<Button
+					variant='outlined'
+					endIcon={sendButtonAnimation()}
+					type='submit'
+					color={success ? 'success' : 'primary'}
+					className='h-14'
+					disabled={loading}
 				>
-					<TextField
-						label='What is your name?'
-						name='name'
-						fullWidth
-						value={formik.values.name}
-						onChange={formik.handleChange}
-						onBlur={formik.handleBlur}
-						error={
-							formik.touched.name && Boolean(formik.errors.name)
-						}
-						helperText={formik.touched.name && formik.errors.name}
-					/>
-					<TextField
-						label='What is your email?'
-						name='email'
-						fullWidth
-						value={formik.values.email}
-						onChange={formik.handleChange}
-						onBlur={formik.handleBlur}
-						error={
-							formik.touched.email && Boolean(formik.errors.email)
-						}
-						helperText={formik.touched.email && formik.errors.email}
-					/>
-					<TextField
-						label='What would you like to say?'
-						name='message'
-						fullWidth
-						multiline
-						value={formik.values.message}
-						onChange={formik.handleChange}
-						onBlur={formik.handleBlur}
-						error={
-							formik.touched.message &&
-							Boolean(formik.errors.message)
-						}
-						helperText={
-							formik.touched.message && formik.errors.message
-						}
-					/>
-					<Button
-						variant='outlined'
-						endIcon={sendButtonAnimation()}
-						type='submit'
-						color={success ? 'success' : 'primary'}
-						className='h-14'
-						disabled={loading}
-					>
-						{renderSubmitButtonText()}
-					</Button>
-				</form>
-			</AnimatedSection>
-		</Element>
+					{renderSubmitButtonText()}
+				</Button>
+			</form>
+		</AnimatedSection>
 	)
 }
 

@@ -1,0 +1,89 @@
+"use client"
+import { useEffect, useState } from 'react';
+import NavItem from '../models/nav-item';
+import Link from 'next/link';
+
+const NavItems = () => {
+    const [activeSection, setActiveSection] = useState('')
+    const items: NavItem[] = [
+		{
+			id: 'home',
+			href: '#home',
+			title: 'Home',
+		},
+		{
+			id: 'about',
+			href: '#about',
+			title: 'About',
+		},
+		{
+			id: 'experience',
+			href: '#experience',
+			title: 'Experience',
+		},
+		{
+			id: 'projects',
+			href: '#projects',
+			title: 'Projects',
+		},
+		{
+			id: 'contact',
+			href: '#contact',
+			title: 'Contact',
+		},
+	]
+
+    useEffect(() => {
+        const sections: HTMLElement[] = []
+		for (const item of items) {
+			const section = document.getElementById(item.id)
+			if (section) {
+				sections.push(section)
+			}
+		}
+
+		const observerOptions = {
+			root: null,
+			rootMargin: '0px',
+			threshold: 0.2,
+		}
+
+		const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					if (
+						items.map((item) => item.id).includes(
+							entry.target.id
+						)
+					) {
+						setActiveSection(entry.target.id)
+					}
+				}
+			})
+		}
+
+		const observer = new IntersectionObserver(
+			handleIntersection,
+			observerOptions
+		)
+
+		sections.forEach((section) => {
+			if (section) {
+				observer.observe(section)
+			}
+		})
+    })
+
+    return items.map((item) => (
+		<li key={item.id}>
+			<Link
+				href={item.href}
+				className={activeSection === item?.id ? 'active' : 'inactive'}
+			>
+				{item.title}
+			</Link>
+		</li>
+	))
+}
+
+export default NavItems;
