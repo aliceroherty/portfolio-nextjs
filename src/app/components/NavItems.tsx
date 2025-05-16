@@ -4,37 +4,47 @@ import NavItem from '../models/nav-item';
 import Link from 'next/link';
 
 const NavItems = () => {
-    const [activeSection, setActiveSection] = useState('')
-    const items: NavItem[] = [
+	const [activeSection, setActiveSection] = useState('')
+	const items: NavItem[] = [
 		{
 			id: 'home',
-			href: '#home',
+			href: '/home',
 			title: 'Home',
 		},
 		{
 			id: 'about',
-			href: '#about',
+			href: '/about',
 			title: 'About',
 		},
 		{
 			id: 'experience',
-			href: '#experience',
+			href: '/experience',
 			title: 'Experience',
 		},
 		{
 			id: 'projects',
-			href: '#projects',
+			href: '/projects',
 			title: 'Projects',
 		},
 		{
 			id: 'contact',
-			href: '#contact',
+			href: '/contact',
 			title: 'Contact',
 		},
 	]
 
-    useEffect(() => {
-        const sections: HTMLElement[] = []
+	useEffect(() => {
+		const path = window.location.pathname.replace('/', '')
+		if (path) {
+			const section = document.getElementById(path)
+			if (section) {
+				section.scrollIntoView({ behavior: 'instant' })
+			}
+		}
+	}, [])
+
+	useEffect(() => {
+		const sections: HTMLElement[] = []
 		for (const item of items) {
 			const section = document.getElementById(item.id)
 			if (section) {
@@ -45,18 +55,21 @@ const NavItems = () => {
 		const observerOptions = {
 			root: null,
 			rootMargin: '0px',
-			threshold: 0.2,
+			threshold: 0.7,
 		}
 
 		const handleIntersection = (entries: IntersectionObserverEntry[]) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					if (
-						items.map((item) => item.id).includes(
-							entry.target.id
-						)
+						items.map((item) => item.id).includes(entry.target.id)
 					) {
 						setActiveSection(entry.target.id)
+						window.history.pushState(
+							null,
+							'',
+							`/${entry.target.id}`
+						)
 					}
 				}
 			})
@@ -72,9 +85,9 @@ const NavItems = () => {
 				observer.observe(section)
 			}
 		})
-    })
+	})
 
-    return items.map((item) => (
+	return items.map((item) => (
 		<li key={item.id}>
 			<Link
 				href={item.href}
