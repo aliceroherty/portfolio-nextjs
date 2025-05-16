@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import { slideInLeft } from '../utils/motion';
 import { Element } from 'react-scroll';
 import { NavHeightContext } from './Nav';
+import AnimatedSection from './utils/AnimatedSection'
 
 const About = () => {
     const navHeight = useContext(NavHeightContext);
@@ -15,14 +16,7 @@ const About = () => {
 			className='w-full'
 			style={{ marginTop: navHeight }}
 		>
-			<motion.div
-				variants={slideInLeft}
-				initial='hidden'
-				whileInView='visible'
-				viewport={{ once: true }}
-				className='w-full text-left mt-1 mb-24'
-				id='about'
-			>
+			<AnimatedSection id='about'>
 				<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
 					About Me
 				</h4>
@@ -52,7 +46,7 @@ const About = () => {
 						Core.
 					</p>
 				</div>
-			</motion.div>
+			</AnimatedSection>
 		</Element>
 	)
 };

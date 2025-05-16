@@ -3,13 +3,12 @@
 import { TextField, Button, CircularProgress } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import CheckIcon from '@mui/icons-material/Check'
-import { motion } from 'motion/react'
 import emailjs from '@emailjs/browser'
 import { Ref, useRef, useState } from 'react'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
-import { slideInLeft } from '../utils/motion'
 import { Element } from 'react-scroll'
+import AnimatedSection from './utils/AnimatedSection'
 
 const validationSchema = yup.object({
 	name: yup
@@ -92,14 +91,7 @@ const Contact = () => {
 
 	return (
 		<Element name='contact' className='w-full'>
-			<motion.div
-				variants={slideInLeft}
-				initial='hidden'
-				whileInView='visible'
-				viewport={{ once: true }}
-				className='w-full pb-16 text-left mt-2'
-				id='contact'
-			>
+			<AnimatedSection id='contact'>
 				<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
 					Contact Me
 				</h4>
@@ -159,7 +151,7 @@ const Contact = () => {
 						{renderSubmitButtonText()}
 					</Button>
 				</form>
-			</motion.div>
+			</AnimatedSection>
 		</Element>
 	)
 }

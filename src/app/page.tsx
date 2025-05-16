@@ -5,7 +5,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
-import ThemeProviderWrapper from './components/ThemeProviderWrapper'
+import ThemeProviderWrapper from './components/utils/ThemeProviderWrapper'
 
 const Page = () => {
 	return (
