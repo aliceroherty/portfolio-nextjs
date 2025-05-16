@@ -33,13 +33,19 @@ const NavItems = () => {
 		},
 	]
 
+	const scrollToSectionWithOffset = (id: string, offset = 50) => {
+		const section = document.getElementById(id)
+		if (section) {
+			const y =
+				section.getBoundingClientRect().top + window.scrollY - offset
+			window.scrollTo({ top: y, behavior: 'smooth' })
+		}
+	}
+
 	useEffect(() => {
 		const path = window.location.pathname.replace('/', '')
 		if (path) {
-			const section = document.getElementById(path)
-			if (section) {
-				section.scrollIntoView({ behavior: 'instant' })
-			}
+			scrollToSectionWithOffset(path, 100)
 		}
 	}, [])
 
